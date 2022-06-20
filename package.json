@@ -1,0 +1,20 @@
+{
+  "name": "algorithm",
+  "version": "1.0.0",
+  "description": "본 내용은 유데미의 강의를 토대로 하고있습니다",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node Programmers/newIdRecomand.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sangkun-svg/Algorithm.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sangkun-svg/Algorithm/issues"
+  },
+  "homepage": "https://github.com/Sangkun-svg/Algorithm#readme"
+}
