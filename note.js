@@ -1,36 +1,50 @@
-// function solution(price = 3, money = 20, count = 4) {
-//   let answer = 0;
-//   for (let index = 1; index <= count; index++) {
-//     answer += price * index;
-//   }
-//   answer > money ? console.log(answer - money) : console.log(0);
-//   return answer > money ? answer - money : 0;
+// function solution(
+//   arr1 = [
+//     [1, 2],
+//     [2, 3],
+//   ],
+//   arr2 = [
+//     [3, 4],
+//     [5, 6],
+//   ]
+// ) {
+//   var answer = [[]];
+//   arr1.reduce((a, b) => console.log(a, b));
 // }
-
 // solution();
-// function solution(numbers = [2, 1, 3, 4, 1]) {
-//   var answer = [];
 
-//   numbers.map((el, idx) => {
-//     for (let j = idx + 1; j < numbers.length; j++) {
-//       answer.push(numbers[idx] + numbers[j]);
+// function solution(participant, completion) {
+//   var answer = "";
+//   for (let i = 0; i < participant.length; i++) {
+//     for (let j = 0; j < completion.length; j++) {
+//       participant[i] == completion[j] ? null : (answer = participant[i]);
 //     }
-//   });
-// console.log([...new Set(answer)].sort((a, b) => a - b));
-//   return [...new Set(answer)].sort((a, b) => a - b);
+//   }
+
+//   return answer;
 // }
 
-// solution();
+// const animals = ["ant", "bison", "camel", "duck", "elephant"];
+// animals.slice(1);
+// console.log(animals);
 
-// function solution(a = [1, 2, 3, 4], b = [-3, -1, 0, 2]) {
-//   const els = a.map((el, idx) => {
-//     return el * b[idx];
-//   });
-//   return els.reduce((a, b) => a + b);
-// }
+function solution(
+  participant = ["mislav", "stanko", "mislav", "ana"],
+  completion = ["stanko", "ana", "mislav"]
+) {
+  const answer = participant.filter((el) => !completion.includes(el));
+  participant.filter((el) => console.log(el));
+  return answer;
+}
 // solution();
-
-function solution(n) {
-  return String(n).split("").sort().reverse().join("");
+function solution(arr = [10]) {
+  var answer = [];
+  const min = Math.min.apply(null, arr);
+  arr.map((el) => {
+    if (el > min) {
+      return answer.push(el);
+    }
+  });
+  return answer[0] ?? [-1];
 }
 solution();
