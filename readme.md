@@ -1,5 +1,7 @@
 이 repo는 Algorithm 의 강의내용 정리 및 관련 코드를 저장합니다.
 
+[Notion](https://root-dugout-9ef.notion.site/Algorithm-78645f08b1e34c11bc7a00acf1b8f87e)
+
 [강의 주소](https://www.udemy.com/course/best-javascript-data-structures/)
 
 <details>
