@@ -28,14 +28,14 @@
 // animals.slice(1);
 // console.log(animals);
 
-function solution(
-  participant = ["mislav", "stanko", "mislav", "ana"],
-  completion = ["stanko", "ana", "mislav"]
-) {
-  const answer = participant.filter((el) => !completion.includes(el));
-  participant.filter((el) => console.log(el));
-  return answer;
-}
+// function solution(
+//   participant = ["mislav", "stanko", "mislav", "ana"],
+//   completion = ["stanko", "ana", "mislav"]
+// ) {
+//   const answer = participant.filter((el) => !completion.includes(el));
+//   participant.filter((el) => console.log(el));
+//   return answer;
+// }
 // solution();
 // function solution(arr = [10]) {
 //   var answer = [];
@@ -54,32 +54,32 @@ function solution(
 //   console.log(answer[date]);
 //   return answer[date];
 // }
-function solution(str) {
-  const arr = [
-    "zero",
-    "one",
-    "two",
-    "three",
-    "four",
-    "five",
-    "six",
-    "seven",
-    "eight",
-    "nine",
-  ];
-  if (Number(str)) {
-    console.log(str);
-    return Number(str);
-  }
+// function solution3(str) {
+//   const arr = [
+//     "zero",
+//     "one",
+//     "two",
+//     "three",
+//     "four",
+//     "five",
+//     "six",
+//     "seven",
+//     "eight",
+//     "nine",
+//   ];
+//   if (Number(str)) {
+//     console.log(str);
+//     return Number(str);
+//   }
 
-  arr.map((el, idx) => (str = str.replaceAll(el, String(idx))));
-  console.log(str);
-  return Number(str);
-}
-solution("one4seveneight");
-solution("23four5six7");
-solution("2three45sixseven");
-solution("123");
+//   arr.map((el, idx) => (str = str.replaceAll(el, String(idx))));
+//   console.log(str);
+//   return Number(str);
+// }
+// solution("one4seveneight");
+// solution("23four5six7");
+// solution("2three45sixseven");
+// solution("123");
 // const T = "(())()";
 // const F = "(()(";
 
@@ -102,3 +102,29 @@ solution("123");
 //   console.log(s.replaceAll("one", 1));
 // };
 // test2("one2one");
+
+function solution4(n) {
+  let answer = 0;
+  let i = 0;
+  while (true) {
+    if (n % i == 1) {
+      answer = i;
+      break;
+    }
+    i++;
+  }
+  return answer;
+}
+
+solution4(10);
+
+function solution(n) {
+  let answer = 0;
+  while (true) {
+    if (n % answer == 1) {
+      break;
+    }
+    answer++;
+  }
+  return answer;
+}
