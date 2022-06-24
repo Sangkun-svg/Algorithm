@@ -11,15 +11,11 @@ function solution(str) {
     "eight",
     "nine",
   ];
-  arr.map((el, idx) => {
-    const regex = new RegExp("ReGeX" + el + "ReGeX");
-    console.log(el);
-    str.replace(regex, idx);
-  });
+  for (let i = 0; i < 10; i++) {
+    str = str.split(arr[i]).join(i);
+  }
   // arr.map((el, idx) => {
-  //   if (str.includes(el)) {
-  //     str = str.replace(el, idx);
-  //   }
+  //   str = str.replaceAll(el, idx);
   // });
   return Number(str);
 }
