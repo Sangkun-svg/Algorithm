@@ -1,130 +1,59 @@
-// function solution(
-//   arr1 = [
-//     [1, 2],
-//     [2, 3],
-//   ],
-//   arr2 = [
-//     [3, 4],
-//     [5, 6],
-//   ]
-// ) {
-//   var answer = [[]];
-//   arr1.reduce((a, b) => console.log(a, b));
-// }
-// solution();
+// (function solution(s = "(())()") {
+//   if (s[0] === ")") return false;
+//   let cnt = 0;
+//   for (let i = 0; i < s.length; i++) {
+//     if (s[i] === "(") cnt += 1;
+//     else cnt -= 1;
+//     if (cnt < 0) return false;
+//   }
+//   if (cnt !== 0) return false;
+//   return true;
+//  })();
 
-// function solution(participant, completion) {
-//   var answer = "";
-//   for (let i = 0; i < participant.length; i++) {
-//     for (let j = 0; j < completion.length; j++) {
-//       participant[i] == completion[j] ? null : (answer = participant[i]);
+// (function solution(s = "(())()") {
+//   if (s[0] === ")") return false;
+//   let stack = [];
+//   for (let i = 0; i < s.length; i++) {
+//     if (s[i] === "(") stack.push(s[i]);
+//     else stack.pop();
+//     console.log(stack);
+//   }
+//   if (stack.length > 0) return false;
+//   return true;
+// })();
+
+(function solution(s = "(())()") {
+  let stack = [];
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === "(") stack.push(s[i]);
+    else {
+      if (s[stack.length - 1] === "(") {
+        stack.pop();
+      } else {
+        stack.push(s[i]);
+      }
+    }
+    console.log(stack);
+  }
+  if (stack.length > 0) return false;
+  return true;
+})();
+
+// function solution(s) {
+//   var temp = [];
+//   for (var i = 0; i < s.length; i++) {
+//     if (s[i] === "(") {
+//       temp.push(s[i]);
+//     } else {
+//       if (temp[temp.length - 1] === "(") {
+//         temp.pop();
+//       } else {
+//         temp.push(s[i]);
+//       }
 //     }
 //   }
-
-//   return answer;
-// }
-
-// const animals = ["ant", "bison", "camel", "duck", "elephant"];
-// animals.slice(1);
-// console.log(animals);
-
-// function solution(
-//   participant = ["mislav", "stanko", "mislav", "ana"],
-//   completion = ["stanko", "ana", "mislav"]
-// ) {
-//   const answer = participant.filter((el) => !completion.includes(el));
-//   participant.filter((el) => console.log(el));
-//   return answer;
-// }
-// solution();
-// function solution(arr = [10]) {
-//   var answer = [];
-//   const min = Math.min.apply(null, arr);
-//   arr.map((el) => {
-//     if (el > min) {
-//       return answer.push(el);
-//     }
-//   });
-//   return answer[0] ?? [-1];
-// }
-// function solution(a = 5, b = 24) {
-//   const date = new Date(2016, a - 1, b).getDay();
-//   console.log(date);
-//   var answer = ["SUN", "MON", "TUE", "WED", "THU", " FRI", " SAT"];
-//   console.log(answer[date]);
-//   return answer[date];
-// }
-// function solution3(str) {
-//   const arr = [
-//     "zero",
-//     "one",
-//     "two",
-//     "three",
-//     "four",
-//     "five",
-//     "six",
-//     "seven",
-//     "eight",
-//     "nine",
-//   ];
-//   if (Number(str)) {
-//     console.log(str);
-//     return Number(str);
+//   if (temp.length > 0) {
+//     return false;
 //   }
-
-//   arr.map((el, idx) => (str = str.replaceAll(el, String(idx))));
-//   console.log(str);
-//   return Number(str);
+//   return true;
 // }
-// solution("one4seveneight");
-// solution("23four5six7");
-// solution("2three45sixseven");
-// solution("123");
-// const T = "(())()";
-// const F = "(()(";
-
-// function solution(s = T) {
-//   for (let i = 0; i <= 3; i++) {
-//     console.log(i, "번째 :", s);
-//     s = s.replace("()", "");
-//   }
-//   console.log(s ?? "nullish");
-//   return s === "" ? true : false;
-// }
-
-// // solution();
-
-// const test = (s) => {
-//   console.log(s.replace("one", 1));
-// };
-// test("one2one");
-// const test2 = (s) => {
-//   console.log(s.replaceAll("one", 1));
-// };
-// test2("one2one");
-
-function solution4(n) {
-  let answer = 0;
-  let i = 0;
-  while (true) {
-    if (n % i == 1) {
-      answer = i;
-      break;
-    }
-    i++;
-  }
-  return answer;
-}
-
-solution4(10);
-
-function solution(n) {
-  let answer = 0;
-  while (true) {
-    if (n % answer == 1) {
-      break;
-    }
-    answer++;
-  }
-  return answer;
-}
