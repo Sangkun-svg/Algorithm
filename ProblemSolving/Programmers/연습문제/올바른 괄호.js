@@ -40,7 +40,6 @@ function solution(s = "(())()") {
         stack.push(s[i]);
       }
     }
-    console.log(stack);
   }
   if (stack.length > 0) return false;
   return true;
