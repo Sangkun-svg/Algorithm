@@ -1,4 +1,4 @@
-function anagram(str1 = "Aaz", str2 = "zza") {
+function anagram(str1, str2) {
   if (str1.length !== str2.length) return false;
 
   let objStr1 = {};
@@ -19,6 +19,26 @@ function anagram(str1 = "Aaz", str2 = "zza") {
   for (const key in objStr1) {
     if (!(key in objStr2)) return false;
     if (objStr1[key] !== objStr2[key]) return false;
+  }
+  return true;
+}
+
+// refactor
+
+function anagram(str1, str2) {
+  if (str1.length !== str2.length) return false;
+
+  let obj = {};
+  for (const el of str1) {
+    obj[el] ? (obj[el] += 1) : (obj[el] = 1);
+  }
+
+  for (const el of str2) {
+    if (!obj[el]) {
+      return false;
+    } else {
+      obj[el] -= 1;
+    }
   }
   return true;
 }
