@@ -1,4 +1,4 @@
-const input = "K1KA5CB7";
+const input = "AJKDLSI412K4JSJ9D";
 const stringArr = [];
 const numArr = [];
 input.split("").map((el) => {
