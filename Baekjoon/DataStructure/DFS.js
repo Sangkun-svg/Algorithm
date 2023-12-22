@@ -117,3 +117,101 @@ tree.insert(20);
 
 console.log(tree.DFS_InOrder());
 // console.log(tree.DFS_PostOrder());
+
+
+class BST {
+  constructor() {
+    this.root = null;
+  }
+  insert(value) {
+    const node = new Node(value);
+    if (!this.root) {
+      this.root = node;
+      return this;
+    } else {
+      let current = this.root;
+      if (value === current.value) return undefined;
+      while (true) {
+        if (value < current.value) {
+          if (current.left) {
+            current = current.left;
+            return this;
+          } else {
+            current.left = node;
+          }
+          if (current.right) {
+            current = current.right;
+            return this;
+          } else {
+            current.right = node;
+          }
+        }
+      }
+    }
+  }
+
+  find(value) {
+    if (!this.root) return undefined;
+    let isFound = false;
+    let current = this.root;
+    while (current && !isFound) {
+      if (value < current.value) {
+        current = current.left;
+      }
+      if (value > current.value) {
+        current = current.right;
+      }
+      if (value === current.value) {
+        isFound = true;
+      }
+    }
+    return isFound ? current : undefined;
+  }
+
+  BFS() {
+    let node = this.root;
+    const queue = [];
+    const visited = [];
+    queue.push(node);
+    while (queue.length) {
+      node = queue.shift();
+      visited.push(node.value);
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
+    }
+    return visited;
+  }
+
+  DFSPreOrder() {
+    const visited = [];
+    const recusion = (node) => {
+      visited.push(node.value);
+      if (node.left) recusion(node.left);
+      if (node.right) recusion(node.right);
+    };
+    recusion(this.root);
+    return visited;
+  }
+
+  DFSPostOrder() {
+    const visited = [];
+    const recusion = (node) => {
+      if (node.left) recusion(node.left);
+      if (node.right) recusion(node.right);
+      visited.push(node.value);
+    };
+    recusion(node);
+    return visited;
+  }
+
+  DFSInOrder() {
+    const visited = [];
+    const recusion = (node) => {
+      if (node.left) recusion(node.left);
+      visited.push(node);
+      if (node.right) recusion(node.right);
+    };
+    recusion(this.root);
+    return visited;
+  }
+}

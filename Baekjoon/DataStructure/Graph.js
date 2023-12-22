@@ -90,25 +90,20 @@ class Graph {
 }
 
 const graph = new Graph();
-graph.addVertex("A");
-graph.addVertex("B");
-graph.addVertex("C");
-graph.addVertex("D");
-graph.addVertex("E");
-graph.addVertex("F");
+graph.addVertex(1);
+graph.addVertex(2);
+graph.addVertex(3);
+graph.addVertex(4);
+console.log(graph);
+graph.addEdge(1, 2);
+graph.addEdge(1, 3);
+graph.addEdge(1, 4);
+graph.addEdge(2, 4);
+graph.addEdge(3, 4);
 
-graph.addEdge("A", "B");
-graph.addEdge("A", "C");
-graph.addEdge("B", "D");
-graph.addEdge("C", "E");
-graph.addEdge("D", "E");
-graph.addEdge("D", "F");
-graph.addEdge("E", "F");
-// console.log(graph.DFSR("A"))
-// console.log(graph.DFSI("A"))
-console.log(graph.BFS("A"))
-
-
+console.log(graph.DFSR(1));
+console.log(graph.BFS(1));
+;
 //          A
 //        /   \
 //       B     C

@@ -22,3 +22,4 @@ console.log(
     GreatestCommonDivisor(input[0], input[1])
   )
 );
+
