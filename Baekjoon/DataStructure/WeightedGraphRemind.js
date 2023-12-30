@@ -5,7 +5,7 @@ class PriorityQueue {
 
   enqueue(val, priority) {
     this.values.push({ val, priority });
-    this.values.sort();
+    this.sort();
   }
 
   dequeue() {
@@ -35,9 +35,11 @@ class WeightedGraph {
     const nodes = new PriorityQueue();
     const distances = {};
     const previous = {};
-    let path = [];
+    const path = [];
     let currentNode;
-    for (let vertex in this.adjacencyList) {
+
+    for (const vertex in this.adjacencyList) {
+      previous[vertex] = null;
       if (vertex === start) {
         distances[vertex] = 0;
         nodes.enqueue(vertex, 0);
@@ -45,8 +47,8 @@ class WeightedGraph {
         distances[vertex] = Infinity;
         nodes.enqueue(vertex, Infinity);
       }
-      previous[vertex] = null;
     }
+
     while (nodes.values.length) {
       currentNode = nodes.dequeue().val;
       if (currentNode === end) {
@@ -56,46 +58,22 @@ class WeightedGraph {
         }
         break;
       }
-      if (currentNode || distances[currentNode] !== Infinity) {
-        for (let neighbor in this.adjacencyList[currentNode]) {
-          let nextNode = this.adjacencyList[currentNode][neighbor];
-          let candidate = distances[currentNode] + nextNode.weight;
-          let nextNeighbor = nextNode.node;
-          if (candidate < distances[nextNeighbor]) {
-            distances[nextNeighbor] = candidate;
-            previous[nextNeighbor] = currentNode;
-            nodes.enqueue(nextNeighbor, candidate);
-          }
+      for (const adjacencyNodeIndex in this.adjacencyList[currentNode]) {
+        const adjacencyNode =
+          this.adjacencyList[currentNode][adjacencyNodeIndex];
+        const newDist = distances[currentNode] + adjacencyNode.weight;
+        if (newDist < distances[adjacencyNode.node]) {
+          distances[adjacencyNode.node] = newDist;
+          previous[adjacencyNode.node] = currentNode;
+          nodes.enqueue(adjacencyNode.node, newDist);
         }
       }
     }
-    // while (nodes.values.length) {
-    //   currentNode = nodes.dequeue().val;
-    //   if (currentNode === end) {
-    //     while (previous[currentNode]) {
-    //       path.push(currentNode);
-    //       currentNode = previous[currentNode];
-    //     }
-    //     break;
-    //   }
-    //   if (distances[currentNode] !== Infinity) {
-    //     for (const adjNodeIdx in this.adjacencyList[currentNode]) {
-    //       let adjNode = this.adjacencyList[currentNode][adjNodeIdx];
-    //       let newDist = distances[currentNode] + adjNode.weight;
-    //       if (newDist < distances[adjNode.node]) {
-    //         distances[adjNode.node] = newDist;
-    //         previous[adjNode.ndoe] = currentNode;
-    //         nodes.enqueue(adjNode.node, newDist);
-    //       }
-    //     }
-    //   }
-    // }
-    console.log(path.concat(currentNode).reverse());
-    return path;
+
+    return path.concat(currentNode).reverse();
   }
 }
 const graph = new WeightedGraph();
-
 graph.addVertex("A");
 graph.addVertex("B");
 graph.addVertex("C");
@@ -112,6 +90,7 @@ graph.addEdge("D", "E", 3);
 graph.addEdge("D", "F", 1);
 graph.addEdge("E", "F", 1);
 
-graph.Dijkstra("A", "E");
+const path = graph.Dijkstra("A", "E");
+console.log(path);
 
 // ["A", "C", "D", "F", "E"]
